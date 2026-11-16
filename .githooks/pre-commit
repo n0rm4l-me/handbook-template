@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Hard rule: no secret in this repository. Enable once per clone with: git config core.hooksPath .githooks
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+python3 scripts/secret_sweep.py --staged
+scripts/tier0.sh
+# Tier 0 reads the working tree. INDEX.md is generated from the pages, and a commit that stages a page without the regenerated INDEX.md
+# would commit an index that is out of date although the working tree passed.
+if ! git diff --quiet -- INDEX.md; then
+  echo "INDEX.md has changes that are not staged: run 'git add INDEX.md' (scripts/make-index.sh generated it from the pages you commit)" >&2
+  exit 1
+fi

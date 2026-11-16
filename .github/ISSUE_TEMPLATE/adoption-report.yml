@@ -1,0 +1,31 @@
+name: Adoption report
+description: What happened when your team used the template, a question that did not fit, a convention that did not suit your kind of team.
+labels: ["adoption"]
+body:
+  - type: input
+    id: team
+    attributes:
+      label: Kind of team
+      description: For example development, QA, SRE or operations, data, security. No names of people or companies are needed.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you try, and what happened
+      description: The first-run question that nobody could answer, the check that fired on correct text, the page that had no place to go.
+    validations:
+      required: true
+  - type: textarea
+    id: wanted
+    attributes:
+      label: What would have fitted your team
+    validations:
+      required: false
+  - type: checkboxes
+    id: safe
+    attributes:
+      label: Nothing private
+      options:
+        - label: This report holds no secret, no personal data and no internal address.
+          required: true

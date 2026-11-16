@@ -1,0 +1,35 @@
+# The tests of the scripts, and Tier 0 on the tree, on Linux and macOS. The secret sweep has its own workflow (secret-sweep.yml).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install the requirements
+        run: pip install -r requirements.txt
+      - name: Tests of the scripts
+        run: |
+          for t in scripts/test_*.py; do
+            echo "== $t"
+            python3 "$t"
+          done
+      - name: Tier 0
+        run: python3 scripts/tier0.py

@@ -1,0 +1,11 @@
+# The ratchet list of the size budget (sweep_size_budget in scripts/tier0.py).
+#
+# The budget: a page is at most 60 000 bytes, CLAUDE.md and INDEX.md at most 40 000. Above it, every call that holds the page is paid
+# for in tokens, and a page over 40 KB is not read whole. A page that is already over when the budget is introduced to an existing
+# handbook is listed here as `PATH BYTES`, and the size on its line is its own limit.
+#
+# The rules of the list: a page may not grow beyond its line (Tier 0 warns, size-over-ratchet); a line is lowered when the page
+# shrinks by more than 1 000 bytes (Tier 0 says so); a line is removed when the page is within its budget; and a line is never added
+# or raised after the list is merged (Tier 0 warns, size-ratchet-raised, against the list on origin/main). To make room, split the page.
+#
+# A new handbook starts with no line here.

@@ -1,0 +1,12 @@
+# Identifiers of other projects, teams or handbooks that must not appear anywhere in this repository (scripts/tier0.py, the check
+# foreign-identifier). One regular expression per line, matched without regard to case. A line that starts with # is a note.
+#
+# A handbook may copy the conventions of another one, never its content: a project name, a cluster, a host, a repository or an
+# organisation copied from a neighbour is wrong here by definition, however much it looks like what this project should have.
+# This file is the only place that names them. Group D3 of FIRST-RUN.md asks for the names; add them below, then run
+# scripts/tier0.sh.
+#
+# Examples, to be replaced:
+# acme-platform
+# project-x-[a-z0-9-]+
+# example\.internal
