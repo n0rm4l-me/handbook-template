@@ -109,5 +109,6 @@ metrics. Add the ones your project needs when it needs them.
 
 The template has not been used by a real team yet. The tests pass and a fresh copy passes Tier 0 with the one warning
 `first-run-pending`, but the 22 questions of the first run are a draft: change them after the first real interview, and keep the format
-(`- **A1** question`, then an optional `*Why:*` line) so that `scripts/first_run.py` can still read them. The scripts were written and
-tested on macOS; the workflow that runs them on Linux has not been seen to pass.
+(`- **A1** question`, then an optional `*Why:*` line) so that `scripts/first_run.py` can still read them. The scripts were written on
+macOS. The CI workflow ran the tests and Tier 0 on Ubuntu and macOS, with Python 3.10 and 3.13, and passed on the first push of the
+repository; it says nothing about other systems, Windows included.
