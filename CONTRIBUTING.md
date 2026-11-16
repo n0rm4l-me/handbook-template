@@ -1,8 +1,8 @@
 # Contributing
 
-Thank you for looking at this template. It is early, and the most useful thing you can send is what you learned by adopting it in a
-real team: a question of the first run that nobody could answer, a check that fired on correct text, a convention that did not fit
-your kind of team (development, QA, SRE, data, security). An issue with that is a contribution.
+Thank you for looking at this template. The most useful thing you can send is what you learned by adopting it in your team: a
+question of the first run that nobody could answer, a check that fired on correct text, a convention that did not fit your kind of
+team (development, QA, SRE, data, security). An issue with that is a contribution.
 
 ## Before you change anything
 
