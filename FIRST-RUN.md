@@ -12,17 +12,21 @@ The result is one page, `reference/sources-of-truth.md`. When it exists and you 
 **An agent** (Claude Code or another) does this when it is asked to start the handbook, or when it finds this file and the page
 `reference/sources-of-truth.md` does not exist:
 
-1. Ask the questions below one group at a time (A, then B, and so on), in the person's words. Do not read the answers out of the
+1. Prepare the clone, once: `pip install -r requirements.txt` and `git config core.hooksPath .githooks`. Both change the machine or
+   the clone, so say what you are about to run and run it only when the person agrees.
+2. Ask the questions below one group at a time (A, then B, and so on), in the person's words. Do not read the answers out of the
    repository: the point is what people know that the repository does not say.
-2. Do not guess. An answer you cannot get is written `unknown`, with the name of the person who can give it.
-3. For every source named in group B, ask for the command that reads it. If the command only reads, and the person agrees, run it
+3. Do not guess. An answer you cannot get is written `unknown`, with the name of the person who can give it.
+4. For every source named in group B, ask for the command that reads it. If the command only reads, and the person agrees, run it
    and note the result as a `live:` entry in `## Sources` (see `process/frontmatter.md`). A source whose command was not run stays
    `unverified`.
-4. Never ask for, accept or write a secret, a token, a password or personal data. If one is offered, say it is not needed and ask
+5. Never ask for, accept or write a secret, a token, a password or personal data. If one is offered, say it is not needed and ask
    for the place where it is kept.
-5. Write `reference/sources-of-truth.md` in the layout below, then set `handbook.cfg` from E2 and E3 and
+6. Write `reference/sources-of-truth.md` in the layout below, then set `handbook.cfg` from E2 and E3 and
    `scripts/foreign-identifiers.txt` from D3.
-6. Propose the first three pages from A3 and C1 to C3, and open the first pull request (`process/pull-requests.md`).
+7. Read the page back with the person. Then write the `README.md` of this handbook from the skeleton in `TEMPLATE.md`, ask before
+   you delete `FIRST-RUN.md` and `TEMPLATE.md`, and run `scripts/tier0.sh`: it should end with no warning.
+8. Propose the first three pages from A3 and C1 to C3, and open the first pull request (`process/pull-requests.md`).
 
 **A person without an agent** runs `python3 scripts/first_run.py`: it asks the same questions from this file, takes a few lines for
 each answer (an empty line ends an answer, `?` or an empty answer means unknown) and writes a first version of the page. An agent can

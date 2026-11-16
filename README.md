@@ -34,17 +34,23 @@ seen, not how confident the author felt. A check refuses a secret, a broken link
 
 ## Quick start
 
-1. Create your repository from this template (on GitHub, "Use this template") or copy the files.
-2. `pip install -r requirements.txt`, then `git config core.hooksPath .githooks` (once per clone).
-3. Run the first-run interview: ask an agent to start the handbook, or run `python3 scripts/first_run.py`. It writes
-   `reference/sources-of-truth.md`.
-4. Read `TEMPLATE.md` for what is in the box and what to adapt. Then write the README of your own handbook (`TEMPLATE.md` has a
-   skeleton) and delete `TEMPLATE.md` and `FIRST-RUN.md`.
-5. Write the first pages from the questions people ask again and again. Add a page when someone has verified content for it, not to
-   fill a structure.
+1. Create your repository from this template (on GitHub, "Use this template"), clone it and open it in your AI agent.
+2. Give the agent one sentence:
 
-Find a page: `grep -i WORD INDEX.md`, then open the page the line names. Check before a commit: `scripts/tier0.sh`.
-Pick what to re-verify next: `python3 scripts/stalest.py -n 5`.
+   ```text
+   Start the handbook: read FIRST-RUN.md and follow it from the first step to the last, and ask me the questions.
+   ```
+
+3. Answer the questions. The agent installs the requirements, switches on the pre-commit hook, writes
+   `reference/sources-of-truth.md` and a README for your handbook, asks before it deletes `FIRST-RUN.md` and `TEMPLATE.md`, and
+   proposes the first pages.
+
+Without an agent: `pip install -r requirements.txt`, `git config core.hooksPath .githooks`, then `python3 scripts/first_run.py`. Read
+`TEMPLATE.md`, write your README from its skeleton, and delete `TEMPLATE.md` and `FIRST-RUN.md`.
+
+From then on, add a page when someone has verified content for it, not to fill a structure. Find a page: `grep -i WORD INDEX.md`, then
+open the page the line names. Check before a commit: `scripts/tier0.sh`. Pick what to re-verify next:
+`python3 scripts/stalest.py -n 5`.
 
 ## Layout
 
