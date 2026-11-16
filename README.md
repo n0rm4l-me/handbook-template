@@ -1,7 +1,8 @@
 # Handbook template
 
-A starting point for the knowledge base of one team or product, kept in git: an index and a memory that AI agents read first and
-people second, with checks that keep it true.
+**A team knowledge base in git that stays true.** It keeps what only people know, points at the source for everything else, says
+what evidence stands behind each page, and checks all of that before every commit. It is written to be read by AI agents first and by
+people second.
 
 It is for any team that has to hand knowledge over to a newcomer, to the person on call or to an agent: development, QA, SRE and
 operations, data, security. It holds no content of its own. It holds the conventions, the scripts that enforce them, a short generic
@@ -16,8 +17,33 @@ One rule: **write only what cannot be derived from a repository or a live comman
 - What does not: lists of endpoints, configuration keys, versions, counts and statuses, anything a command prints. A page links to the
   source instead, because a copied value rots silently and is trusted anyway.
 
-Everything else follows from it. A page says where each fact comes from and how to check it again. Its `status` says what evidence was
-seen, not how confident the author felt. A check refuses a secret, a broken link, a missing source and an index that is out of date.
+The rest of the template exists to make that rule hold.
+
+## What makes it different
+
+Most documentation templates give you folders to fill. This one gives you rules about truth, and the machinery that enforces them.
+
+- **It is built on a rule, not on a structure.** A page links to the source instead of repeating a value, so there is nothing to rot
+  silently. The agent that writes the pages gets the rule first, and the procedures behind it (keep the documentation current, verify
+  before you claim) exist to make it hold.
+- **Every page says what was seen, not how sure the author felt.** `verified` means the commands were run and the output was seen;
+  anything else is `unverified`. A page carries the command that re-checks it and a `Sources` section: a commit that is pinned, a live
+  result with its date, or a person's word recorded as `team knowledge` and unverified. A `verified` page that nobody re-checks is
+  flagged as it ages.
+- **It starts from where the truth lives.** Before the first page is written, the first-run interview asks for each kind of fact which
+  system is the source of truth, how to read it with a command, who owns it, and which source wins when two disagree.
+- **It is built for the agent that reads it.** A generated `INDEX.md` has one line for each page. An agent greps it and opens one page,
+  reads a large page by section, and reads a procedure only when its trigger fires, so it pays for the page it needs and not for the
+  whole handbook.
+- **The checks run offline, in seconds, before every commit.** Secrets (in the hook, and in CI on the tree and on every commit ever
+  made), front matter, sources, links, an index that is out of date, page size, the age of a verification, names copied from another
+  project, text outside the language rule. No network and no credentials.
+- **Records state facts, not conversations, and never a guess.** A fact is written with its source. A name, an id or a count goes in
+  only when it was read in the session; otherwise the page holds a capitalised placeholder, not a plausible value that the next reader
+  copies into a command.
+- **It fits any team.** The questions and the rules do not depend on a role, and the folder names are a setting.
+- **It is tested like software.** Every script has tests, one end-to-end test walks a fresh copy through the first run to a first
+  commit through the hook, and CI runs them on Linux and macOS.
 
 ## What you get
 
@@ -71,9 +97,10 @@ workflow runs the tests on both.
 
 ## Status
 
-Early. The tests pass and a fresh copy passes Tier 0 with one warning (`first-run-pending`), but no real team has used the template
-yet, and the 22 questions of the first run are a draft. Reports from a first real adoption are the most useful contribution: see
-[CONTRIBUTING.md](CONTRIBUTING.md).
+As of 2026-11-16, by the account of its author: the template has been used on two projects, and this version holds the fixes found
+there. The tests pass and a fresh copy passes Tier 0 with one warning (`first-run-pending`). The 22 questions of the first run are the
+part most worth adapting: change them for your team and keep the format. Reports from other teams are the most useful contribution:
+see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

@@ -105,10 +105,11 @@ Checks that depend on a stack: the target of infrastructure commands, a single a
 module hashes, a project IAM policy. Procedures that depend on a stack: preflight, production safety, label selectors, application
 metrics. Add the ones your project needs when it needs them.
 
-## What has not been verified
+## What has and has not been verified
 
-The template has not been used by a real team yet. The tests pass and a fresh copy passes Tier 0 with the one warning
-`first-run-pending`, but the 22 questions of the first run are a draft: change them after the first real interview, and keep the format
-(`- **A1** question`, then an optional `*Why:*` line) so that `scripts/first_run.py` can still read them. The scripts were written on
-macOS. The CI workflow ran the tests and Tier 0 on Ubuntu and macOS, with Python 3.10 and 3.13, and passed on the first push of the
-repository; it says nothing about other systems, Windows included.
+The author used the template on two projects, and this version carries the fixes found there. That is the author's account as of
+2026-11-16 (team knowledge, unverified): those projects are not recorded in this repository. The tests pass and a fresh copy passes
+Tier 0 with the one warning `first-run-pending`. The 22 questions of the first run are the part most worth adapting: change them for
+your team, and keep the format (`- **A1** question`, then an optional `*Why:*` line) so that `scripts/first_run.py` can still read
+them. The scripts were written on macOS. The CI workflow ran the tests and Tier 0 on Ubuntu and macOS, with Python 3.10 and 3.13, and
+passed on the first push of the repository; it says nothing about other systems, Windows included.
